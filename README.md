@@ -1,5 +1,5 @@
 # Hastechno
-# 🖥️ Tienda Virtual de Computadoras y Hardware
+# 🖥️ TIENDA VIRTUAL DE COMPONENTES DE COMPUTADORES
 
 ## 📋 Resumen
 
