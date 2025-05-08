@@ -16,7 +16,6 @@ Desarrollar y lanzar una plataforma de comercio electrónico accesible y segura,
 * 📰 Ofrecer contenido relevante, preciso y accesible sobre temas tecnológicos, incluyendo noticias, avances de la industria, guías prácticas, reseñas de productos y análisis expertos.
 * 📦 Configurar un sistema de gestión de inventario eficiente para administrar el stock de productos y evitar la falta de existencias.
 * 💳 Implementar procesos de pago seguros y opciones de envío confiables para garantizar la satisfacción del cliente.
-* 💬 Brindar un excelente servicio al cliente mediante canales de comunicación efectivos, como correo electrónico o soporte telefónico.
 
 ## 🚩 Planteamiento del Problema
 
