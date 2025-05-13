@@ -1,31 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
+// Componente para cada tarjeta de marca
 const BrandCard = ({ brand }) => {
-  const logoUrl = `/assets/img/marcas/${brand.idMarca}.png`; // Asegúrate que este path coincide con tu estructura
+  const navigate = useNavigate();
+  const logoUrl = `/assets/img/marcas/${brand.idMarca}.png`;
+
+  const handleViewProducts = () => {
+    // Redirigir a la página de productos de la marca
+    navigate(`/productos/marca/${brand.idMarca}`);
+  };
 
   return (
     <div className="col">
       <div className="card shadow-sm text-center h-100">
-        <div style={{ height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img
             src={logoUrl}
             alt={brand.nombreMarca}
             className="p-3"
-            style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+            style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
           />
         </div>
         <div className="card-body d-flex flex-column justify-content-between">
           <h5 className="card-title">{brand.nombreMarca}</h5>
-          <a href={`/productos/marca/${brand.idMarca}`} className="btn btn-primary mt-3">
+          <button onClick={handleViewProducts} className="btn btn-primary mt-3">
             Ver Productos
-          </a>
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
+// Página principal de marcas
 const BrandsPage = () => {
   const [brands, setBrands] = useState([]);
 

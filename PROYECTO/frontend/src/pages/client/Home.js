@@ -1,10 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
+import { useDispatch } from "react-redux"; // Importa useDispatch
+import { addToCart } from "../../redux/cartSlice"; 
 
 // Card del producto
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch(); // Obtén la función dispatch
   const imagePath = `/assets/img/productos/${product.idProducto}/principal.png`; // Ajusta según tu estructura
+const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        idProducto: product.idProducto,
+        nombreProducto: product.nombreProducto,
+        valorProducto: product.valorProducto,
+        cantidad: 1, // Puedes permitir al usuario cambiar la cantidad en otro lugar
+      })
+    );
+    // Opcional: Puedes agregar alguna retroalimentación visual aquí
+    console.log(`Producto "${product.nombreProducto}" agregado al carrito desde la Home.`);
+  };
 
   return (
     <div className="col">
@@ -21,13 +36,15 @@ const ProductCard = ({ product }) => {
             <a href={`/info/${product.idProducto}`} className="btn btn-primary">
               Info
             </a>
-            <button className="btn btn-outline-primary">Agregar</button>
+            <button className="btn btn-outline-primary" onClick={handleAddToCart}>
+              Agregar
+            </button>
           </div>
         </div>
       </div>
     </div>
   );
-};
+};  
 
 const HomePage = () => {
   const [productosRecientes, setProductosRecientes] = useState([]);
