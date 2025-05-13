@@ -7,7 +7,7 @@ const cartSlice = createSlice({
   name: 'carrito',
   initialState,
   reducers: {
-    agregarAlCarrito: (state, action) => {
+    addToCart: (state, action) => {
       const producto = action.payload;
       const existe = state.find(p => p.idProducto === producto.idProducto);
       if (existe) {
@@ -32,5 +32,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { agregarAlCarrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito } = cartSlice.actions;
+export const { addToCart, eliminarDelCarrito, actualizarCantidad, vaciarCarrito } = cartSlice.actions;
 export default cartSlice.reducer;

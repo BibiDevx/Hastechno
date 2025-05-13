@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"; // Importa useDispatch
+import { addToCart } from "../redux/cartSlice"; // Ajusta la ruta según tu estructura de archivos
 
 const ProductosPorMarca = () => {
   const { idMarca } = useParams();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch(); // Obtén la función dispatch
 
   useEffect(() => {
     fetch(`http://localhost:8000/api/verProductos/marcas/${idMarca}`)
       .then((res) => res.json())
       .then((data) => {
-        if (Array.isArray(data)) {
-          setProductos(data);
+        if (data.success && Array.isArray(data.data)) {
+          setProductos(data.data);
         } else {
-          console.error("Error al cargar productos:", data);
+          console.error("Error al cargar productos:", data.message);
         }
         setLoading(false);
       })
@@ -23,6 +26,19 @@ const ProductosPorMarca = () => {
         setLoading(false);
       });
   }, [idMarca]);
+
+  const handleAddToCart = (producto) => {
+    dispatch(
+      addToCart({
+        idProducto: producto.idProducto,
+        nombreProducto: producto.nombreProducto,
+        valorProducto: producto.valorProducto,
+        cantidad: 1, // Puedes permitir al usuario cambiar la cantidad
+      })
+    );
+    // Opcional: Puedes agregar una notificación o feedback al usuario
+    console.log(`Producto "${producto.nombreProducto}" agregado al carrito.`);
+  };
 
   if (loading) {
     return <div className="text-center mt-5">Cargando productos...</div>;
@@ -33,7 +49,6 @@ const ProductosPorMarca = () => {
       <h2 className="text-center mb-4">Productos de la Marca</h2>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {productos.map((producto) => {
-          // Ajusta esta ruta según cómo almacenas tus imágenes
           const imagenUrl = `/assets/img/productos/${producto.idProducto}/principal.png`;
 
           return (
@@ -60,7 +75,10 @@ const ProductosPorMarca = () => {
                     >
                       Info
                     </button>
-                    <button className="btn btn-outline-primary">
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={() => handleAddToCart(producto)} // Asocia la función al botón
+                    >
                       Agregar
                     </button>
                   </div>

@@ -39,7 +39,7 @@ class productoController extends BaseController
     {
         $productos = Producto::select('idProducto', 'nombreProducto', 'valorProducto')
             ->where('idMarca', $idMarca)->get();
-        return response()->json($productos);
+        return $this->sendResponse($productos, 'Productos por marca obtenidos correctamente');
     }
 
     public function show($id)
