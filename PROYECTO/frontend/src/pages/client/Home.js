@@ -2,41 +2,64 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
 import { useDispatch } from "react-redux"; // Importa useDispatch
-import { addToCart } from "../../redux/cartSlice"; 
+import { addToCart } from "../../redux/cartSlice";
 
 // Card del producto
 const ProductCard = ({ product }) => {
-  const dispatch = useDispatch(); // Obtén la función dispatch
-  const imagePath = `/assets/img/productos/${product.idProducto}/principal.png`; // Ajusta según tu estructura
-const handleAddToCart = () => {
+  const dispatch = useDispatch();
+  const imagePath = `/assets/img/productos/${product.idProducto}/principal.png`;
+
+  const handleAddToCart = () => {
     dispatch(
       addToCart({
         idProducto: product.idProducto,
         nombreProducto: product.nombreProducto,
         valorProducto: product.valorProducto,
-        cantidad: 1, // Puedes permitir al usuario cambiar la cantidad en otro lugar
+        cantidad: 1,
       })
     );
-    // Opcional: Puedes agregar alguna retroalimentación visual aquí
-    console.log(`Producto "${product.nombreProducto}" agregado al carrito desde la Home.`);
+    console.log(
+      `Producto "${product.nombreProducto}" con ID ${product.idProducto} agregado al carrito desde la Home.`
+    );
   };
 
   return (
     <div className="col">
-      <div className="card shadow-sm">
-        <img
-          src={imagePath}
-          alt={product.nombreProducto}
-          className="card-img-top"
-        />
-        <div className="card-body">
+      <div className="card shadow-sm text-center h-100">
+        {" "}
+        {/* Añadimos text-center y h-100 */}
+        <div
+          style={{
+            height: "200px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          {" "}
+          {/* Contenedor de imagen */}
+          <img
+            src={imagePath}
+            alt={product.nombreProducto}
+            className="p-3"
+            style={{
+              maxHeight: "100%",
+              maxWidth: "100%",
+              objectFit: "contain",
+            }}
+          />
+        </div>
+        <div className="card-body d-flex flex-column justify-content-between">
           <h5 className="card-title">{product.nombreProducto}</h5>
           <p className="card-text">${product.valorProducto.toLocaleString()}</p>
-          <div className="d-flex justify-content-between align-items-center">
+          <div className="mt-3">
             <a href={`/info/${product.idProducto}`} className="btn btn-primary">
               Info
             </a>
-            <button className="btn btn-outline-primary" onClick={handleAddToCart}>
+            <button
+              className="btn btn-outline-primary ms-3"
+              onClick={handleAddToCart}
+            >
               Agregar
             </button>
           </div>
@@ -44,7 +67,7 @@ const handleAddToCart = () => {
       </div>
     </div>
   );
-};  
+};
 
 const HomePage = () => {
   const [productosRecientes, setProductosRecientes] = useState([]);

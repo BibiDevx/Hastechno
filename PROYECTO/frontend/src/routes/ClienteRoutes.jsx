@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../pages/cliente/Home";
-import Marcas from "../pages/cliente/Marcas";
-import Checkout from "../pages/cliente/checkout";
-import Productos from "../pages/cliente/Productos";
-import RegistroCliente from "../pages/cliente/registro";
-import RecuperacionCliente from "../pages/cliente/recuperar";
-import Pago from "../pages/cliente/Pago";
-import Login from "../pages/cliente/Login";
+import Home from "../pages/client/Home";
+import Marcas from "../pages/client/Marcas";
+import Checkout from "../pages/client/checkout";
+import Productos from "../pages/client/Productos";
+import RegistroCliente from "../pages/client/registro";
+import RecuperacionCliente from "../pages/client/recuperar";
+import Pago from "../pages/client/Pago";
+import Login from "../pages/client/Login";
 
 export default function ClienteRoutes({ modoPrueba = false }) {
   return (
