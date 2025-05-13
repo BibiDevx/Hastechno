@@ -1,0 +1,27 @@
+[{
+  "_id": {
+    "$oid": "67d0a7c0cf24fbafcfa19430"
+  },
+  "id": 1,
+  "nombre": "PC SYSTEMS",
+  "correo": "pcsystems@gmail.com",
+  "telefono": 43256442
+},
+{
+  "_id": {
+    "$oid": "67d0a7c0cf24fbafcfa19431"
+  },
+  "id": 2,
+  "nombre": "DMI Computer",
+  "correo": "dmicomputer@gmail.com",
+  "telefono": 321456556
+},
+{
+  "_id": {
+    "$oid": "67d0a7c0cf24fbafcfa19432"
+  },
+  "id": 3,
+  "nombre": "compSAS",
+  "correo": "sas@gmail.com",
+  "telefono": 3123456975
+}]

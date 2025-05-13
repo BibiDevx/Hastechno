@@ -1,0 +1,156 @@
+[{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7942"
+  },
+  "id": 1,
+  "nombre": "BOARD ASUS B550M-A AC WIFI",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7943"
+  },
+  "id": 2,
+  "nombre": "BOARD ASUS B650M-A WIFI",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7944"
+  },
+  "id": 3,
+  "nombre": "BOARD ASUS H510M-K",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7945"
+  },
+  "id": 4,
+  "nombre": "BOARD GIGABYTE A520M-K V2",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7946"
+  },
+  "id": 5,
+  "nombre": "BOARD GIGABYTE B550M DS3H",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba6a158cf4f3bb24d7947"
+  },
+  "id": 6,
+  "nombre": "BOARD MSI A520M-A PRO",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba84458cf4f3bb24d7948"
+  },
+  "id": 7,
+  "nombre": "BOARD MSI PRO B550M VDH WIFI",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 7
+},
+{
+  "_id": {
+    "$oid": "67bba84458cf4f3bb24d7949"
+  },
+  "id": 8,
+  "nombre": "FUENTE CORSAIR CV 650W 80",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 9
+},
+{
+  "_id": {
+    "$oid": "67bba84458cf4f3bb24d794a"
+  },
+  "id": 9,
+  "nombre": "FUENTE CORSAIR CV 750W 80",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 9
+},
+{
+  "_id": {
+    "$oid": "67bba84458cf4f3bb24d794b"
+  },
+  "id": 10,
+  "nombre": "MEMORIA RAM DDR4 8GB 3600MHz CORSAIR VENGEANCE LPX",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 10
+},
+{
+  "_id": {
+    "$oid": "67bbabde58cf4f3bb24d794c"
+  },
+  "id": 13,
+  "nombre": "MEMORIA RAM DDR4 8GB 3600MHz CORSAIR VENGEANCE LPX",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 10
+},
+{
+  "_id": {
+    "$oid": "67bbabde58cf4f3bb24d794d"
+  },
+  "id": 11,
+  "nombre": "Monitor Led Lg 24″ Ips Fhd 1ms-180Hz-G-Sync 24gs65f-B Pivot",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 2
+},
+{
+  "_id": {
+    "$oid": "67bbabde58cf4f3bb24d794e"
+  },
+  "id": 12,
+  "nombre": "Monitor Led Lg 32″ Va Full Hd Curvo 100hz 32mr50c-B",
+  "descripcion": "",
+  "valor": 456,
+  "idProveedor": 1,
+  "disponibilidad": 1,
+  "idCategoria": 2
+}]

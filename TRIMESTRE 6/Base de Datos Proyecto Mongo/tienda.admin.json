@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "67d0a34e726e5f20b129e061"
+  },
+  "id": 1,
+  "idUsuario": 1,
+  "nombre": "Miguel",
+  "apellido": "Sanchez",
+  "correo": "miguelsanz@gmail.com",
+  "password": "1234",
+  "telefono": "3216546544"
+},
+{
+  "_id": {
+    "$oid": "67d0a34e726e5f20b129e062"
+  },
+  "id": 2,
+  "idUsuario": 1,
+  "nombre": "Roa",
+  "apellido": "Camargo",
+  "correo": "roamargo@gmail.com",
+  "password": "5678",
+  "telefono": "3216546864"
+},
+{
+  "_id": {
+    "$oid": "67d0a34e726e5f20b129e063"
+  },
+  "id": 3,
+  "idUsuario": 1,
+  "nombre": "Diego",
+  "apellido": "Ro",
+  "correo": "diegoro@gmail.com",
+  "password": "987456",
+  "telefono": "321516578"
+}]

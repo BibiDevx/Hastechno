@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "67d0a6b1c62ca57aabc010c0"
+  },
+  "id": 1,
+  "idCliente": 1,
+  "fechaPedido": {
+    "$date": "2025-03-11T21:10:09.348Z"
+  },
+  "idProducto": 1
+},
+{
+  "_id": {
+    "$oid": "67d0d0853661d7571d23afde"
+  },
+  "id": 2,
+  "idCliente": 1,
+  "fechaPedido": {
+    "$date": "2025-03-11T21:10:09.348Z"
+  },
+  "idProducto": 1
+},
+{
+  "_id": {
+    "$oid": "67d0d0d13661d7571d23afdf"
+  },
+  "id": 3,
+  "idCliente": 1,
+  "fechaPedido": {
+    "$date": "2025-03-11T21:10:09.348Z"
+  },
+  "idProducto": 1
+}]

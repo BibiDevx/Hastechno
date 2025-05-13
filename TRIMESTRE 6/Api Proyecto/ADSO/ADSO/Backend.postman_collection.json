@@ -1,0 +1,1564 @@
+{
+	"info": {
+		"_postman_id": "9c194c47-61fb-4685-99ab-7edc6470c170",
+		"name": "Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42829002",
+		"_collection_link": "https://orange-robot-29015.postman.co/workspace/Team-Workspace~bb8d4c1b-9b1b-47f3-80a8-fce4450c5d34/collection/42829002-9c194c47-61fb-4685-99ab-7edc6470c170?action=share&source=collection_link&creator=42829002"
+	},
+	"item": [
+		{
+			"name": "Global",
+			"item": [
+				{
+					"name": "Productos",
+					"item": [
+						{
+							"name": "Ver index Productos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verProductos",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verProductos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver Show Producto",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verProductos/2",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verProductos",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver HomeProductos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verProductos/home",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verProductos",
+										"home"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Marcas",
+					"item": [
+						{
+							"name": "Ver Marcas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verMarcas",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verMarcas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver Marca",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verMarcas/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verMarcas",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Categorias",
+					"item": [
+						{
+							"name": "Ver Categorias",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verCategorias",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verCategorias"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ver Categoria",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/verCategorias/1",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"verCategorias",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "registerCliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombreCliente\": \"Valentina\",\r\n  \"apellidoCliente\": \"Ruiz\",\r\n  \"cedulaCliente\": \"1009876543\",\r\n  \"email\": \"valentina.ruiz@example.com\",\r\n  \"password\": \"123456\",\r\n  \"c_password\": \"123456\",\r\n  \"telefonoCliente\": \"3027418529\",\r\n  \"direccion\": \"Calle 10 #34-56\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/cliente?nombreCliente=Alexander&apellidoCliente=Poveda&cedulaCliente=1000576804&email=bibi@example.com&password=216996&c_password=216996&telefonoCliente=3246150849&direccion=KR 53 C 128 19",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								"cliente"
+							],
+							"query": [
+								{
+									"key": "nombreCliente",
+									"value": "Alexander"
+								},
+								{
+									"key": "apellidoCliente",
+									"value": "Poveda"
+								},
+								{
+									"key": "cedulaCliente",
+									"value": "1000576804"
+								},
+								{
+									"key": "email",
+									"value": "bibi@example.com"
+								},
+								{
+									"key": "password",
+									"value": "216996"
+								},
+								{
+									"key": "c_password",
+									"value": "216996"
+								},
+								{
+									"key": "telefonoCliente",
+									"value": "3246150849"
+								},
+								{
+									"key": "direccion",
+									"value": "KR 53 C 128 19"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LoginCliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login?email=perez@example.com&password=123456",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "perez@example.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogoutCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjM2MjMsImV4cCI6MTc0NTAyNzIyMywibmJmIjoxNzQ1MDIzNjIzLCJqdGkiOiJnT0NoT3E0aWdMbUV3Y1lqIiwic3ViIjoiMiIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.YpEv36y2iM26VIfCB2LYMwwU7ODwaA9gnaaBn5LIu24",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RefreshCliente",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjI1NzcsImV4cCI6MTc0NTAyNjE3NywibmJmIjoxNzQ1MDIyNTc3LCJqdGkiOiI0b1dFc000UlI0RFJoZmVZIiwic3ViIjoiMTUiLCJwcnYiOiI1ODcwODYzZDRhNjJkNzkxNDQzZmFmOTM2ZmMzNjgwMzFkMTEwYzRmIn0.dKo3oYslWqtjFOaA4UWDTKLZqzZKvh6Z7qpnUJBhVYg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfileCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyMjU3NywiZXhwIjoxNzQ1MDI2MTk0LCJuYmYiOjE3NDUwMjI1OTQsImp0aSI6IlNZUDZVNHJIeWozQzRINHMiLCJzdWIiOiIxNSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.m78AUBHzGxhLcnLBVWf3xmAiyR3KgJjRW03DdQkWq2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update partialCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyMjU3NywiZXhwIjoxNzQ1MDI2MTk0LCJuYmYiOjE3NDUwMjI1OTQsImp0aSI6IlNZUDZVNHJIeWozQzRINHMiLCJzdWIiOiIxNSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.m78AUBHzGxhLcnLBVWf3xmAiyR3KgJjRW03DdQkWq2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes/actualizar/cuenta?nombreCliente=Sara",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes",
+								"actualizar",
+								"cuenta"
+							],
+							"query": [
+								{
+									"key": "nombreCliente",
+									"value": "Sara"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroyCliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyMjU3NywiZXhwIjoxNzQ1MDI2MTk0LCJuYmYiOjE3NDUwMjI1OTQsImp0aSI6IlNZUDZVNHJIeWozQzRINHMiLCJzdWIiOiIxNSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.m78AUBHzGxhLcnLBVWf3xmAiyR3KgJjRW03DdQkWq2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/clientes/eliminar/cuenta",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"clientes",
+								"eliminar",
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Super",
+					"item": [
+						{
+							"name": "registerAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDQ4NjMwMDksImV4cCI6MTc0NDg2NjYwOSwibmJmIjoxNzQ0ODYzMDA5LCJqdGkiOiJFUHg0VDV3eTdsdU9RVUkzIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.4zpGDjPgChtQsREfbuxd8-y7QZFD7ASGl4Ivl9e4CJU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAdmin\": \"Brian\",\r\n    \"apellidoAdmin\": \"Beltran\",\r\n    \"cedulaAdmin\": \"1000576803\",\r\n    \"email\": \"babeltranp@gmail.com\",\r\n    \"password\": \"Unnped21@u\",\r\n    \"c_password\": \"Unnped21@u\",\r\n    \"telefonoAdmin\": \"3208332507\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/auth/register/admin",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"auth",
+										"register",
+										"admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index Rol",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/control/roles",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"control",
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show Rol",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/control/roles/3",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"control",
+										"roles",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SuperAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idRol\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/admin/6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DestroyAdmin",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/users/admin/6",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"users",
+										"admin",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "register roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAdmin\": \"Brian\",\r\n    \"apellidoAdmin\": \"Beltran\",\r\n    \"cedulaAdmin\": \"1000576803\",\r\n    \"email\": \"babeltranp@gmail.com\",\r\n    \"password\": \"Unnped21@u\",\r\n    \"c_password\": \"Unnped21@u\",\r\n    \"telefonoAdmin\": \"3208332507\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/control/roles/registrar?nombreRol=xd",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"control",
+										"roles",
+										"registrar"
+									],
+									"query": [
+										{
+											"key": "nombreRol",
+											"value": "xd"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idRol\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/control/roles/actualizar/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"control",
+										"roles",
+										"actualizar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Destroy roles",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/control/roles/eliminar/4",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"control",
+										"roles",
+										"eliminar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "productos",
+					"item": [
+						{
+							"name": "Ver Detalles Productos",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjczNzksImV4cCI6MTc0NTAzMDk3OSwibmJmIjoxNzQ1MDI3Mzc5LCJqdGkiOiIxR3V2MzRCaExvcnExaGwwIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.9-Iy1E_vXzJB2aWNqBinRFEhdAtHYmDVn_agokSu6bU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/productos/detalles",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productos",
+										"detalles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "registrar Producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMzA5OTEsImV4cCI6MTc0NTAzNDU5MSwibmJmIjoxNzQ1MDMwOTkxLCJqdGkiOiJkU3B3ZUxmU1V6UmhvRTdrIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.kJR9_eAtMRmqi8MSJoHM0Gd9VMBHcUej2ZlIBlIMJ6E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombreProducto\": \"Laptop ASUS ROG\",\r\n  \"definicion\": \"Laptop gamer con procesador AMD Ryzen 7 y tarjeta gráfica RTX 3060\",\r\n  \"valorProducto\": 5999000,\r\n  \"disponibilidad\": true,\r\n  \"idMarca\": 3,\r\n  \"idProveedor\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/productos/registrar",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productos",
+										"registrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar Producto",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMzA5OTEsImV4cCI6MTc0NTAzNDU5MSwibmJmIjoxNzQ1MDMwOTkxLCJqdGkiOiJkU3B3ZUxmU1V6UmhvRTdrIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.kJR9_eAtMRmqi8MSJoHM0Gd9VMBHcUej2ZlIBlIMJ6E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/productos/actualizar/1?definicion=es una board",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productos",
+										"actualizar",
+										"1"
+									],
+									"query": [
+										{
+											"key": "definicion",
+											"value": "es una board"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar Producto",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/productos/eliminar/11",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"productos",
+										"eliminar",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "categorias",
+					"item": [
+						{
+							"name": "registrar categoria",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/categorias/registrar",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"categorias",
+										"registrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar categoria",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/categorias/actualizar/20",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"categorias",
+										"actualizar",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar categoria",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/categorias/eliminar/20",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"categorias",
+										"eliminar",
+										"20"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "marcas",
+					"item": [
+						{
+							"name": "registrar marca",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/marcas/registrar",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"marcas",
+										"registrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar marca",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/marcas/actualizar/20",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"marcas",
+										"actualizar",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar marca",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/marcas/eliminar/20",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"marcas",
+										"eliminar",
+										"20"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "LoginAdmin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login?email=admin@admin.com&password=123456",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@admin.com"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LogoutAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjYzNDgsImV4cCI6MTc0NTAyOTk0OCwibmJmIjoxNzQ1MDI2MzQ4LCJqdGkiOiJiSnd3T1pJMnR6b2x4d1NXIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.puNaf40BGaQXfDDul2rsckH2px-yQt_CDKleDiawqic",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RefreshCliente Copy",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDUwMjYzNzAsImV4cCI6MTc0NTAyOTk3MCwibmJmIjoxNzQ1MDI2MzcwLCJqdGkiOiJtV2dPMXd2OVRVdXdyZnBQIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.dqwVGGYZph6NdaZ980DMvDEWB3FNyFDGm8s0nK2Ij74",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/refresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProfileAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/profile",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdatePartialAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apellidoAdmin\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/actualizar/datos",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"actualizar",
+								"datos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "indexAdmins",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDM2NTMyODAsImV4cCI6MTc0MzY1Njg4MCwibmJmIjoxNzQzNjUzMjgwLCJqdGkiOiJDSEs3dDVyRFpScXBSTmpSIiwic3ViIjoiMjQiLCJwcnYiOiIyZmQ3NTU4ZGRkMTg4NDVmNWQ5MjA2MDk0NGIwN2VkMmMzZmNlN2RlIn0.6E8mFtbrStE77haIa093fNurB1CxElqHKjXEqzEbOec",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDM2NTMyODAsImV4cCI6MTc0MzY1Njg4MCwibmJmIjoxNzQzNjUzMjgwLCJqdGkiOiJDSEs3dDVyRFpScXBSTmpSIiwic3ViIjoiMjQiLCJwcnYiOiIyZmQ3NTU4ZGRkMTg4NDVmNWQ5MjA2MDk0NGIwN2VkMmMzZmNlN2RlIn0.6E8mFtbrStE77haIa093fNurB1CxElqHKjXEqzEbOec",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/8",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "index Cliente Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDM2NTMyODAsImV4cCI6MTc0MzY1Njg4MCwibmJmIjoxNzQzNjUzMjgwLCJqdGkiOiJDSEs3dDVyRFpScXBSTmpSIiwic3ViIjoiMjQiLCJwcnYiOiIyZmQ3NTU4ZGRkMTg4NDVmNWQ5MjA2MDk0NGIwN2VkMmMzZmNlN2RlIn0.6E8mFtbrStE77haIa093fNurB1CxElqHKjXEqzEbOec",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/consumidores/clientes",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"consumidores",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show Cliente Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/consumidores/clientes/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"consumidores",
+								"clientes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualiza Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvcmVmcmVzaCIsImlhdCI6MTc0NTAyNjM3MCwiZXhwIjoxNzQ1MDI5OTkwLCJuYmYiOjE3NDUwMjYzOTAsImp0aSI6IlRUMm9LSmNpMTlYTUgzQmwiLCJzdWIiOiIxIiwicHJ2IjoiNTg3MDg2M2Q0YTYyZDc5MTQ0M2ZhZjkzNmZjMzY4MDMxZDExMGM0ZiJ9.3QZ8s50KTGY42Gj_aTCQFYMpGiWSwZiqHRt9p6FLDi8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/consumidores/clientes/actualizar/1?nombreCliente=Juana",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"consumidores",
+								"clientes",
+								"actualizar",
+								"1"
+							],
+							"query": [
+								{
+									"key": "nombreCliente",
+									"value": "Juana"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "elimina Cliente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NDM3OTE0MDksImV4cCI6MTc0Mzc5NTAwOSwibmJmIjoxNzQzNzkxNDA5LCJqdGkiOiJWellTeDhEcmpuUE1mZTFSIiwic3ViIjoiMSIsInBydiI6IjU4NzA4NjNkNGE2MmQ3OTE0NDNmYWY5MzZmYzM2ODAzMWQxMTBjNGYifQ.esnRB0CCyXIQUypmZuVBVYK_qtZ5BE6LdPPVZS5rXDQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/consumidores/clientes/eliminar/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"consumidores",
+								"clientes",
+								"eliminar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

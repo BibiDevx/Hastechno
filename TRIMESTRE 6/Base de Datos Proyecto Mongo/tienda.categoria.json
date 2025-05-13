@@ -1,0 +1,70 @@
+[{
+  "_id": {
+    "$oid": "67bba08659759c17ca4d7946"
+  },
+  "id": 1,
+  "nombre": "perifericos"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d7947"
+  },
+  "id": 2,
+  "nombre": "monitores"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d7948"
+  },
+  "id": 3,
+  "nombre": "procesadores"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d7949"
+  },
+  "id": 4,
+  "nombre": "ventiladores"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794a"
+  },
+  "id": 5,
+  "nombre": "tarjetas de video"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794b"
+  },
+  "id": 6,
+  "nombre": "almacenamiento"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794c"
+  },
+  "id": 7,
+  "nombre": "boards"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794d"
+  },
+  "id": 8,
+  "nombre": "chasis"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794e"
+  },
+  "id": 9,
+  "nombre": "fuentes"
+},
+{
+  "_id": {
+    "$oid": "67bba42f59759c17ca4d794f"
+  },
+  "id": 10,
+  "nombre": "memoria"
+}]

@@ -1,0 +1,42 @@
+[{
+  "_id": {
+    "$oid": "67bb9f4559759c17ca4d7942"
+  },
+  "id": 1,
+  "idUsuario": 3,
+  "nombre": "Pepe",
+  "apellido": "Perez",
+  "CC": 1000578759,
+  "email": "pepepe@gmail.com",
+  "password": "1234",
+  "telefono": 3216549874,
+  "direccion": "CL 4A 44 88"
+},
+{
+  "_id": {
+    "$oid": "67d0a4d2752dc873d64d9438"
+  },
+  "id": 2,
+  "idUsuario": 3,
+  "nombre": "Emiliano",
+  "apellido": "Paris",
+  "CC": 1000556789,
+  "email": "emilipano@gmail.com",
+  "password": "456789",
+  "telefono": 3213519874,
+  "direccion": "CL 80"
+},
+{
+  "_id": {
+    "$oid": "67d0a4d2752dc873d64d9439"
+  },
+  "id": 3,
+  "idUsuario": 3,
+  "nombre": "Carlos",
+  "apellido": "Stemen",
+  "CC": 1000556789,
+  "email": "cartemen@gmail.com",
+  "password": "54116498",
+  "telefono": 3213789524,
+  "direccion": "CL 100 69"
+}]
