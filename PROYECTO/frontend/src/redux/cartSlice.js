@@ -1,36 +1,33 @@
-// redux/slices/cartSlice.js
+// src/redux/cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = [];
+const initialState = []; // El estado inicial del carrito será un array vacío
 
-const cartSlice = createSlice({
+export const cartSlice = createSlice({
   name: 'carrito',
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      const producto = action.payload;
-      const existe = state.find(p => p.idProducto === producto.idProducto);
-      if (existe) {
-        existe.cantidad += 1;
+      const existingItem = state.find(item => item.idProducto === action.payload.idProducto);
+      if (existingItem) {
+        existingItem.cantidad = (existingItem.cantidad || 0) + (action.payload.cantidad || 1);
       } else {
-        state.push({ ...producto, cantidad: 1 });
+        state.push({ ...action.payload, cantidad: action.payload.cantidad || 1 });
       }
     },
     eliminarDelCarrito: (state, action) => {
-      return state.filter(p => p.idProducto !== action.payload);
+      return state.filter(item => item.idProducto !== action.payload);
     },
     actualizarCantidad: (state, action) => {
-      const { idProducto, nuevaCantidad } = action.payload;
-      const producto = state.find(p => p.idProducto === idProducto);
-      if (producto && nuevaCantidad > 0) {
-        producto.cantidad = nuevaCantidad;
+      const itemToUpdate = state.find(item => item.idProducto === action.payload.idProducto);
+      if (itemToUpdate) {
+        itemToUpdate.cantidad = action.payload.nuevaCantidad;
       }
     },
-    vaciarCarrito: () => {
-      return [];
-    },
+    // Puedes agregar más reducers para limpiar el carrito, etc.
   },
 });
 
-export const { addToCart, eliminarDelCarrito, actualizarCantidad, vaciarCarrito } = cartSlice.actions;
+export const { addToCart, eliminarDelCarrito, actualizarCantidad } = cartSlice.actions;
+
 export default cartSlice.reducer;

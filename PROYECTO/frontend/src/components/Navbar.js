@@ -1,20 +1,26 @@
 // src/components/Navbar.js
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import authServices from "../services/authServices"; // Importamos authServices
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../redux/authSlice";
+import authServices from "../services/authServices";
 
 function Navbar() {
-  const { usuario, setUsuario } = useAuth(); // Accedemos al usuario y la función setUsuario
+  const usuario = useSelector((state) => state.auth.usuario);
+  const cartItems = useSelector((state) => state.carrito); // Obtén el array de items del carrito
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const logout = async () => {
+  // Calcula la cantidad total de items en el carrito
+  const cartCount = cartItems.reduce((total, item) => total + (item.cantidad || 1), 0);
+
+  const handleLogout = async () => {
     try {
-      await authServices.logout(); // Llamamos al servicio logout
+      await authServices.logout();
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
     } finally {
-      setUsuario(null); // Limpiamos el estado del contexto
-      navigate("/login"); // Redirigimos al login
+      dispatch(logout());
+      navigate("/login");
     }
   };
 
@@ -51,7 +57,7 @@ function Navbar() {
 
           <Link to="/checkout" className="btn btn-success me-3 btn-sm">
             <i className="bi bi-cart-fill">
-              <span id="num_cart" className="badge bg-secondary">0</span>
+              <span id="num_cart" className="badge bg-secondary">{cartCount}</span> {/* Muestra la cantidad del carrito */}
             </i>
           </Link>
 
@@ -68,7 +74,7 @@ function Navbar() {
               <ul className="dropdown-menu dropdown-menu-end">
                 <li><Link to="/editar-perfil" className="dropdown-item">Editar Perfil</Link></li>
                 <li>
-                  <button className="dropdown-item" onClick={logout}>
+                  <button className="dropdown-item" onClick={handleLogout}>
                     Logout
                   </button>
                 </li>

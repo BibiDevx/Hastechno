@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useAuth } from "./context/AuthContext";  // Importa el contexto de autenticación
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
+import { useSelector } from "react-redux";
 import ClienteRoutes from "./routes/ClienteRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 import Navbar from "./components/Navbar";
@@ -8,7 +14,7 @@ import Perfil from "./components/Perfil";
 import EditarPerfil from "./components/EditarPerfil";
 import SidebarAdmin from "./components/SidebarAdmin";
 import ProductInfo from "./components/ProductInfo";
-import ProductosPorMarca from "./components/ProductosPorMarca"; // Importado para mostrar productos por marca
+import ProductosPorMarca from "./components/ProductosPorMarca";
 
 function App() {
   return (
@@ -19,48 +25,50 @@ function App() {
 }
 
 function MainLayout() {
-  const { usuario } = useAuth();  // Obtenemos el usuario desde el contexto
-  const navigate = useNavigate();  // Usamos navigate para redirigir
+  const usuario = useSelector((state) => state.auth.usuario);
+  const navigate = useNavigate();
   const location = useLocation();
 
-  // Verificamos si el usuario está logueado y si es admin o cliente
   useEffect(() => {
-    if (!usuario) return;  // Si no hay usuario, no hacer nada
+    if (!usuario) return;
 
-    // Si el usuario es un admin y no está en una ruta de admin, lo redirigimos
-    if (usuario.role === "admin" && !location.pathname.startsWith("/admin")) {
-      navigate("/admin");  // Redirige al admin
-    } 
-    // Si el usuario es un cliente y está en una ruta de admin, lo redirigimos a perfil
-    else if (usuario.role === "cliente" && location.pathname.startsWith("/admin")) {
-      navigate("/perfil");  // Redirige al cliente a su perfil
+    const currentPath = location.pathname;
+
+    if (usuario.rol === "Admin" && currentPath === "/admin") {
+      navigate("/admin");
+    } else if (usuario.rol === "Admin" && !currentPath.startsWith("/admin")) {
+      navigate("/admin");
+    } else if (usuario.rol === "SuperAdmin" && currentPath === "/superadmin") {
+      navigate("/superadmin/dashboard");
+    } else if (usuario.rol === "SuperAdmin" && !currentPath.startsWith("/superadmin")) {
+      navigate("/superadmin");
+    } else if (usuario.rol === "cliente" && currentPath.startsWith("/admin")) {
+      navigate("/perfil");
+    } else if (usuario.rol === "cliente" && currentPath.startsWith("/superadmin")) {
+      navigate("/perfil");
     }
   }, [usuario, location, navigate]);
 
   const isAdminRoute = location.pathname.startsWith("/admin");
+  const isSuperAdminRoute = location.pathname.startsWith("/superadmin");
 
   return (
     <div className="d-flex">
-      {isAdminRoute && <SidebarAdmin />} {/* Sidebar solo para admin */}
+      {(isAdminRoute || isSuperAdminRoute) && <SidebarAdmin />}
       <div className="flex-grow-1">
-        {!isAdminRoute ? <Navbar /> : null} {/* Navbar visible para cliente */}
-
+        {!(isAdminRoute || isSuperAdminRoute) ? <Navbar /> : null}
         <Routes>
-          {/* Rutas de cliente (home, productos, carrito, etc) */}
-          <Route path="/*" element={<ClienteRoutes />} />
-
-          {/* Perfil del cliente */}
-          <Route path="/perfil" element={<Perfil />} />
-          <Route path="/editar-perfil" element={<EditarPerfil />} />
-
-          {/* Vista individual de un producto */}
-          <Route path="/info/:idProducto" element={<ProductInfo />} />
-
-          {/* Productos filtrados por marca */}
-          <Route path="/productos/marca/:idMarca" element={<ProductosPorMarca />} />
-
           {/* Rutas de administración */}
           <Route path="/admin/*" element={<AdminRoutes />} />
+          {/* Rutas de superadministración */}
+          <Route path="/superadmin/*" element={<AdminRoutes />} /> {/* Asumiendo que AdminRoutes sirve también para SuperAdmin */}
+          {/* Rutas de cliente */}
+          <Route path="/*" element={<ClienteRoutes />} />
+          {/* Rutas específicas */}
+          <Route path="/perfil" element={<Perfil />} />
+          <Route path="/editar-perfil" element={<EditarPerfil />} />
+          <Route path="/info/:idProducto" element={<ProductInfo />} />
+          <Route path="/productos/marca/:idMarca" element={<ProductosPorMarca />} />
         </Routes>
       </div>
     </div>

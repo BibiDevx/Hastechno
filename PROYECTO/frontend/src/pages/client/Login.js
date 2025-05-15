@@ -1,35 +1,38 @@
-// src/pages/Login.js
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import authServices from "../../services/authServices";
-import { useAuth } from "../../context/AuthContext";
+import { useDispatch } from "react-redux"; // Importa useDispatch
+import { loginSuccess, loginFailure, clearError } from "../../redux/authSlice"; // Importa las acciones de Redux
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
-  const { setUsuario } = useAuth();
+  const dispatch = useDispatch(); // Obtén la función dispatch
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    dispatch(clearError()); // Limpia cualquier error previo en el estado de Redux
 
     try {
       const { access_token, user } = await authServices.login(email, password);
 
-      if (access_token) {
-        setUsuario(user);
-        navigate(user.role === "admin" ? "/admin" : "/perfil");
-      } else {
-        setError("No se recibió un token");
+      if (access_token && user) { // Asegúrate de que 'user' también exista
+        dispatch(loginSuccess({ user, access_token })); // Despacha la acción con el 'user' recibido
+        navigate(user.rol === "Admin" ? "/admin" : "/perfil");
+      }else if (user.rol === "SuperAdmin") {
+          navigate("/superadmin"); // 👈 Redirige a SuperAdmin
+        } else {
+        setError("Credenciales inválidas o no se recibió información del usuario.");
+        dispatch(loginFailure("Credenciales inválidas o no se recibió información del usuario."));
       }
     } catch (err) {
       setError("Usuario o contraseña incorrectos");
+      dispatch(loginFailure("Usuario o contraseña incorrectos")); // Despacha la acción de fallo
     }
   };
-
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -59,7 +62,7 @@ const Login = () => {
             </div>
             <button type="submit" className="btn btn-primary w-100">
               Ingresar
-            </button>
+            </button> 
           </form>
           <div className="mt-3 text-center">
             <a href="/recuperar">¿Olvidaste tu contraseña?</a>

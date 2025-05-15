@@ -2,29 +2,39 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { eliminarDelCarrito, actualizarCantidad } from "../../redux/cartSlice";
 import { Modal, Button } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = () => {
   const cart = useSelector((state) => state.carrito);
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated); // 👈 Accede al estado de autenticación de Redux
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
-  const userLoggedIn = true;
 
-  // ✅ Cambiar cantidad
+  const userLoggedIn = isAuthenticated; // Usa el estado de Redux para verificar si el usuario está logueado
+
   const handleQuantityChange = (idProducto, nuevaCantidad) => {
     if (nuevaCantidad >= 1) {
       dispatch(actualizarCantidad({ idProducto, nuevaCantidad }));
     }
   };
 
-  // ✅ Eliminar producto
   const removeProduct = () => {
     dispatch(eliminarDelCarrito(productToDelete));
     setShowModal(false);
   };
 
   const total = cart.reduce((sum, item) => sum + item.valorProducto * item.cantidad, 0);
+
+  const handleRealizarPago = () => {
+    if (userLoggedIn) {
+      navigate('/pago');
+    } else {
+      navigate('/login');
+    }
+  };
 
   return (
     <div className="container mt-4">
@@ -73,11 +83,7 @@ const Checkout = () => {
 
       <h4 className="text-end">Total: ${total.toLocaleString()}</h4>
       <div className="d-grid gap-2 col-md-5 offset-md-7">
-        {userLoggedIn ? (
-          <Button variant="primary" size="lg" href="/login">Realizar pago</Button>
-        ) : (
-          <Button variant="primary" size="lg" href="/pago">Realizar pago</Button>
-        )}
+        <Button variant="primary" size="lg" onClick={handleRealizarPago}>Realizar pago</Button>
       </div>
 
       {/* Modal para eliminar */}
