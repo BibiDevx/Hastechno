@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux"; // Importa useDispatch
-import { addToCart } from "../redux/cartSlice"; // Ajusta la ruta según tu estructura de archivos
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// Importa la URL base de la API desde el archivo de configuración o variables de entorno
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const ProductosPorMarca = () => {
   const { idMarca } = useParams();
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const dispatch = useDispatch(); // Obtén la función dispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/verProductos/marcas/${idMarca}`)
@@ -35,53 +36,51 @@ const ProductosPorMarca = () => {
         idProducto: producto.idProducto,
         nombreProducto: producto.nombreProducto,
         valorProducto: producto.valorProducto,
-        cantidad: 1, // Puedes permitir al usuario cambiar la cantidad
+        cantidad: 1,
       })
     );
-    // Opcional: Puedes agregar una notificación o feedback al usuario
     console.log(`Producto "${producto.nombreProducto}" agregado al carrito.`);
   };
 
   if (loading) {
-    return <div className="text-center mt-5">Cargando productos...</div>;
+    return <div className="container mt-5 text-center"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Cargando...</span></div></div>;
   }
 
   return (
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Productos de la Marca</h2>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4 fw-bold text-primary">Productos de la Marca</h2>
       <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
         {productos.map((producto) => {
           const imagenUrl = `/assets/img/productos/${producto.idProducto}/principal.png`;
-
           return (
             <div key={producto.idProducto} className="col">
-              <div className="card h-100 shadow-sm">
-                <img
-                  src={imagenUrl}
-                  alt={producto.nombreProducto}
-                  className="card-img-top"
-                  style={{ height: "200px", objectFit: "cover" }}
-                />
-                <div className="card-body d-flex flex-column justify-content-between">
+              <div className="card h-100 shadow-sm border-0 rounded-lg">
+                <div className="bg-light d-flex align-items-center justify-content-center p-3" style={{ height: "220px" }}>
+                  <img
+                    src={imagenUrl}
+                    alt={producto.nombreProducto}
+                    className="img-fluid p-2"
+                    style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
+                  />
+                </div>
+                <div className="card-body d-flex flex-column justify-content-between bg-white p-3">
                   <div>
-                    <h5 className="card-title">{producto.nombreProducto}</h5>
-                    <p className="card-text">{producto.descripcion}</p>
-                    <p className="card-text fw-bold">
-                      ${producto.valorProducto.toLocaleString()}
-                    </p>
+                    <h5 className="card-title fw-bold text-truncate">{producto.nombreProducto}</h5>
+                    <p className="card-text text-muted small">{producto.descripcion}</p>
+                    <p className="card-text fw-bold mb-0">${producto.valorProducto.toLocaleString()}</p>
                   </div>
-                  <div className="d-flex justify-content-between mt-3">
+                  <div className="d-flex justify-content-between align-items-center mt-3">
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-outline-info btn-sm rounded-pill fw-semibold"
                       onClick={() => navigate(`/info/${producto.idProducto}`)}
                     >
-                      Info
+                      <i className="bi bi-info-circle me-1"></i> Info
                     </button>
                     <button
-                      className="btn btn-outline-primary"
-                      onClick={() => handleAddToCart(producto)} // Asocia la función al botón
+                      className="btn btn-primary btn-sm rounded-pill fw-semibold"
+                      onClick={() => handleAddToCart(producto)}
                     >
-                      Agregar
+                      <i className="bi bi-cart-plus-fill me-1"></i> Agregar
                     </button>
                   </div>
                 </div>
@@ -94,4 +93,4 @@ const ProductosPorMarca = () => {
   );
 };
 
-export default ProductosPorMarca;
+export default ProductosPorMarca; 

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux"; // Importa useDispatch
-import { addToCart } from "../redux/cartSlice"; // Ajusta la ruta según tu estructura de archivos
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/cartSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// Importa la URL base de la API desde el archivo de configuración o variables de entorno
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const ProductInfo = () => {
   const { idProducto } = useParams();
   const [producto, setProducto] = useState(null);
-  const dispatch = useDispatch(); // Obtén la función dispatch
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/verProductos/${idProducto}`)
@@ -31,7 +31,7 @@ const ProductInfo = () => {
           idProducto: producto.idProducto,
           nombreProducto: producto.nombreProducto,
           valorProducto: producto.valorProducto,
-          cantidad: 1, // Puedes permitir al usuario cambiar la cantidad en otro lugar
+          cantidad: 1,
         })
       );
       console.log(
@@ -42,7 +42,12 @@ const ProductInfo = () => {
 
   if (!producto) {
     return (
-      <div className="container mt-5">Cargando información del producto...</div>
+      <div className="container mt-5 text-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Cargando...</span>
+        </div>
+        <p className="mt-2 text-muted">Cargando información del producto...</p>
+      </div>
     );
   }
 
@@ -52,33 +57,37 @@ const ProductInfo = () => {
     <div className="container mt-5">
       <div className="row">
         {/* Imagen */}
-        <div className="col-md-6">
+        <div className="col-md-6 mb-4">
           <img
             src={imagePath}
             alt={producto.nombreProducto}
-            className="img-fluid rounded"
+            className="img-fluid rounded shadow-sm"
+            style={{ maxHeight: "400px", objectFit: "contain" }}
           />
         </div>
 
         {/* Información del producto */}
         <div className="col-md-6">
-          <h2>{producto.nombreProducto}</h2>
-          <p className="text-muted">
-            Marca:{" "}
-            {producto.marca ? producto.marca.nombreMarca : "No disponible"}
+          <h2 className="fw-bold  mb-3">{producto.nombreProducto}</h2>
+          <p className="text-muted mb-2">
+            Marca: <span className="fw-semibold">{producto.marca ? producto.marca.nombreMarca : "No disponible"}</span>
           </p>
-          <p className="text-muted">
+          <p className="text-muted mb-2">
             Categorías:{" "}
-            {producto.categorias && producto.categorias.length > 0
-              ? producto.categorias.map((c) => c.nombreCategoria).join(", ")
-              : "No disponible"}
+            <span className="fw-semibold">
+              {producto.categorias && producto.categorias.length > 0
+                ? producto.categorias.map((c) => c.nombreCategoria).join(", ")
+                : "No disponible"}
+            </span>
           </p>
-          <h4 className="text">${producto.valorProducto.toLocaleString()}</h4>
-          <p>{producto.definicion}</p>
+          <h4 className="fw-bold mb-3">${producto.valorProducto.toLocaleString()}</h4>
+          <p className=" mb-4">{producto.definicion || "Descripción no disponible."}</p>
 
-          <button className="btn btn-primary" onClick={handleAddToCart}>
-            Agregar al carrito
-          </button>
+          <div className="d-flex gap-2 align-items-center">
+            <button className="btn btn-primary rounded-pill fw-semibold" onClick={handleAddToCart}>
+              <i className="bi bi-cart-plus-fill me-1"></i> Agregar al carrito
+            </button>
+          </div>
         </div>
       </div>
     </div>

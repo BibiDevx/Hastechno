@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
-import { useDispatch } from "react-redux"; // Importa useDispatch
+import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
+import { Link } from "react-router-dom"; // Importa Link
 
-// Importa la URL base de la API desde el archivo de configuración o variables de entorno
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-// Card del producto
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const imagePath = `/assets/img/productos/${product.idProducto}/principal.png`;
@@ -28,42 +27,33 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className="col">
-      <div className="card shadow-sm text-center h-100">
-        {" "}
-        {/* Añadimos text-center y h-100 */}
+      <div className="card shadow-sm text-center h-100 border-0 rounded-lg">
         <div
-          style={{
-            height: "200px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="bg-light d-flex align-items-center justify-content-center p-3"
+          style={{ height: "220px" }}
         >
-          {" "}
-          {/* Contenedor de imagen */}
           <img
             src={imagePath}
             alt={product.nombreProducto}
-            className="p-3"
-            style={{
-              maxHeight: "100%",
-              maxWidth: "100%",
-              objectFit: "contain",
-            }}
+            className="img-fluid"
+            style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
           />
         </div>
-        <div className="card-body d-flex flex-column justify-content-between">
-          <h5 className="card-title">{product.nombreProducto}</h5>
-          <p className="card-text">${product.valorProducto.toLocaleString()}</p>
-          <div className="mt-3">
-            <a href={`/info/${product.idProducto}`} className="btn btn-primary">
+        <div className="card-body d-flex flex-column justify-content-between bg-white p-3">
+          <h5 className="card-title fw-bold text-truncate">{product.nombreProducto}</h5>
+          <p className="card-text fw-bold">${product.valorProducto.toLocaleString()}</p>
+          <div className="mt-3 d-flex justify-content-center gap-2">
+            <Link
+              to={`/info/${product.idProducto}`}
+              className="btn btn-outline-info btn-sm rounded-pill fw-semibold"
+            >
               Info
-            </a>
+            </Link>
             <button
-              className="btn btn-outline-primary ms-3"
+              className="btn btn-primary btn-sm rounded-pill fw-semibold"
               onClick={handleAddToCart}
             >
-              Agregar
+              <i className="bi bi-cart-plus-fill me-1"></i> Agregar
             </button>
           </div>
         </div>
@@ -91,100 +81,99 @@ const HomePage = () => {
   return (
     <div>
       {/* Slider */}
-      <Carousel className="mt-3" interval={5000}>
-        <Carousel.Item>
+      <Carousel className="mt-3 shadow-sm" interval={5000} style={{ maxHeight: "400px", overflow: "hidden" }}>
+        <Carousel.Item style={{ height: "400px" }}>
           <img
-            className="d-block w-100"
+            className="d-block w-100 h-100 object-fit-cover"
             src="/assets/img/banner/banner1.png"
             alt="Oferta 1"
-            style={{ height: "400px", width: "auto" }}
           />
         </Carousel.Item>
-
-        <Carousel.Item>
+        <Carousel.Item style={{ height: "400px" }}>
           <img
-            className="d-block w-100"
+            className="d-block w-100 h-100 object-fit-cover"
             src="/assets/img/banner/banner2.png"
             alt="Oferta 2"
-            style={{ height: "400px", width: "auto" }}
           />
-          <Carousel.Caption>
-            <h3>Procesadores de Última Generación</h3>
-            <p>Consigue los nuevos Ryzen e Intel.</p>
+          <Carousel.Caption className="bg-dark bg-opacity-75 rounded p-2">
+            <h3 className="fw-bold text-warning">Procesadores de Última Generación</h3>
+            <p className="mb-0">Consigue los nuevos Ryzen e Intel.</p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
 
       {/* Productos Nuevos */}
-      <div className="container mt-4">
-        <h2 className="text-center">Productos Nuevos</h2>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div className="container mt-5">
+        <h2 className="text-center mb-4 fw-bold text-primary">Nuevos Productos</h2>
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
           {productosRecientes.length > 0 ? (
             productosRecientes.map((product) => (
               <ProductCard key={product.idProducto} product={product} />
             ))
           ) : (
-            <p className="text-center">Cargando productos...</p>
+            <p className="text-center text-muted">Cargando productos...</p>
           )}
         </div>
       </div>
 
+      {/* Novedades del Mundo Tech */}
       <div className="container mt-5">
-        <h2 className="text-center mb-4">Novedades del Mundo Tech</h2>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="card h-100">
+        <h2 className="text-center mb-4 fw-bold ">Novedades del Mundo Tech</h2>
+        <div className="row row-cols-1 row-cols-md-3 g-4">
+          <div className="col">
+            <div className="card h-100 shadow-sm border-0 rounded-lg">
               <img
                 src="/assets/img/novedad/noticia1.png"
-                className="card-img-top"
+                className="card-img-top rounded-top"
                 alt="Noticia 1"
+                style={{ height: "200px", objectFit: "cover" }}
               />
-              <div className="card-body">
-                <h5 className="card-title">NVIDIA lanza nueva RTX 5090</h5>
-                <p className="card-text">
-                  La nueva generación promete duplicar el rendimiento respecto a
-                  la 4090.
+              <div className="card-body p-3">
+                <h5 className="card-title fw-semibold text-secondary">NVIDIA lanza nueva RTX 5090</h5>
+                <p className="card-text small text-muted">
+                  La nueva generación promete duplicar el rendimiento respecto a la 4090.
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card h-100">
+          <div className="col">
+            <div className="card h-100 shadow-sm border-0 rounded-lg">
               <img
                 src="/assets/img/novedad/noticia2.png"
-                className="card-img-top"
+                className="card-img-top rounded-top"
                 alt="Noticia 2"
+                style={{ height: "200px", objectFit: "cover" }}
               />
-              <div className="card-body">
-                <h5 className="card-title">AMD presenta Ryzen 9000</h5>
-                <p className="card-text">
-                  Con una arquitectura mejorada y consumo energético más
-                  eficiente.
+              <div className="card-body p-3">
+                <h5 className="card-title fw-semibold text-secondary">AMD presenta Ryzen 9000</h5>
+                <p className="card-text small text-muted">
+                  Con una arquitectura mejorada y consumo energético más eficiente.
                 </p>
               </div>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="card h-100">
+          <div className="col">
+            <div className="card h-100 shadow-sm border-0 rounded-lg">
               <img
                 src="/assets/img/novedad/noticia3.png"
-                className="card-img-top"
+                className="card-img-top rounded-top"
                 alt="Noticia 3"
+                style={{ height: "200px", objectFit: "cover" }}
               />
-              <div className="card-body">
-                <h5 className="card-title">Intel apuesta por chips híbridos</h5>
-                <p className="card-text">
-                  Los nuevos procesadores fusionan eficiencia y potencia para
-                  laptops.
+              <div className="card-body p-3">
+                <h5 className="card-title fw-semibold text-secondary">Intel apuesta por chips híbridos</h5>
+                <p className="card-text small text-muted">
+                  Los nuevos procesadores fusionan eficiencia y potencia para laptops.
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
       {/* Footer */}
-      <footer className="bg-dark text-light text-center p-3 mt-4">
-        <p>© 2025 PC Componentes | Todos los derechos reservados</p>
+      <footer className="bg-dark text-light text-center p-3 mt-5">
+        <p className="mb-0 small">© 2025 PC Componentes | Todos los derechos reservados</p>
       </footer>
     </div>
   );

@@ -1,29 +1,28 @@
 // src/components/SidebarAdmin.js
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/authSlice";
 import authServices from "../services/authServices";
 
 export default function SidebarAdmin() {
   const [isGestionOpen, setIsGestionOpen] = useState(false);
   const [isConfiguracionOpen, setIsConfiguracionOpen] = useState(false);
-  const [isPedidosOpen, setIsPedidosOpen] = useState(false);
+  const [isUsuariosOpen, setIsUsuariosOpen] = useState(false);
+  const usuario = useSelector((state) => state.auth.usuario);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const toggleGestion = () => setIsGestionOpen(!isGestionOpen);
-  const toggleConfiguracion = () =>
-    setIsConfiguracionOpen(!isConfiguracionOpen);
-  const togglePedidos = () => setIsPedidosOpen(!isPedidosOpen);
+  const toggleConfiguracion = () => setIsConfiguracionOpen(!isConfiguracionOpen);
+  const toggleUsuarios = () => setIsUsuariosOpen(!isUsuariosOpen);
 
   const handleLogout = async () => {
     try {
       await authServices.logout();
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
-      // Opcional: Mostrar un mensaje de error al usuario
     } finally {
       dispatch(logout());
       navigate("/login");
@@ -32,112 +31,122 @@ export default function SidebarAdmin() {
 
   return (
     <div
-      className="d-flex flex-column p-3 bg-dark text-white min-vh-100"
-      style={{ width: "250px" }}
+      className="d-flex flex-column p-3 bg-dark text-white min-vh-100 shadow-sm"
+      style={{ width: "260px" }}
     >
-      <h4 className="text-center mb-4">Admin Panel</h4>
-      <h5 className="text-white">
-        <Link className="nav-link text-white" to="/admin/">
-          Dashboard
-        </Link>
-      </h5>
+      <div className="d-flex align-items-center mb-4">
+        <i className="bi bi-gear-fill me-2 fs-5"></i>
+        <h4 className="text-center mb-0 fw-bold">Admin Panel</h4>
+      </div>
+      {usuario && (
+        <div className="d-flex align-items-center justify-content-center mb-3">
+          <i className="bi bi-person-circle-fill me-2 fs-6 text-secondary"></i>
+          <p className="text-white mb-0 small text-center">{usuario.nombre}</p>
+        </div>
+      )}
+      <hr className="text-secondary mb-3" />
+      <h6 className="text-white-50 mb-3">MENÚ</h6>
       <ul className="nav flex-column">
-        {/* Sección de Gestión */}
-        <h5
-          className="text-white"
-          onClick={toggleGestion}
-          style={{ cursor: "pointer" }}
-        >
-          Gestión{" "}
-          <i
-            className={`bi ${
-              isGestionOpen ? "bi-chevron-up" : "bi-chevron-down"
-            }`}
-          ></i>
-        </h5>
-        <div className={`collapse ${isGestionOpen ? "show" : ""}`}>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/productos">
+        <li className="nav-item mb-2">
+          <Link className="nav-link text-white d-flex align-items-center" to="/admin/">
+            <i className="bi bi-speedometer2 me-2 fs-6"></i> Dashboard
+          </Link>
+        </li>
+        <li className="nav-item mb-2">
+          <div
+            onClick={toggleGestion}
+            style={{ cursor: "pointer" }}
+            className="nav-link text-white d-flex align-items-center"
+          >
+            <i className="bi bi-box-seam me-2 fs-6"></i> Gestión
+            <i
+              className={`bi ${
+                isGestionOpen ? "bi-chevron-up" : "bi-chevron-down"
+              } ms-auto`}
+            ></i>
+          </div>
+          <div className={`collapse ${isGestionOpen ? "show" : ""} ms-3`}>
+            <Link className="nav-link text-white py-1" to="/admin/productos">
               Productos
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/marcas">
+            <Link className="nav-link text-white py-1" to="/admin/marcas">
               Marcas
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/categorias">
+            <Link className="nav-link text-white py-1" to="/admin/categorias">
               Categorías
             </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/usuarios">
-              Usuarios
+          </div>
+        </li>
+        <li className="nav-item mb-2">
+          <div
+            onClick={toggleUsuarios}
+            style={{ cursor: "pointer" }}
+            className="nav-link text-white d-flex align-items-center"
+          >
+            <i className="bi bi-people-fill me-2 fs-6"></i> Usuarios
+            <i
+              className={`bi ${
+                isUsuariosOpen ? "bi-chevron-up" : "bi-chevron-down"
+              } ms-auto`}
+            ></i>
+          </div>
+          <div className={`collapse ${isUsuariosOpen ? "show" : ""} ms-3`}>
+            {usuario?.rol === "superadmin" && (
+              <Link className="nav-link text-white py-1" to="/admin/usuarios/admin">
+                Admins
+              </Link>
+            )}
+            <Link className="nav-link text-white py-1" to="/admin/usuarios/cliente">
+              Clientes
             </Link>
-          </li>
-        </div>
-
-        {/* Sección de Pedidos */}
-        <h5
-          className="text-white mt-4"
-          onClick={togglePedidos}
-          style={{ cursor: "pointer" }}
-        >
-          Pedidos{" "}
-          <i
-            className={`bi ${
-              isPedidosOpen ? "bi-chevron-up" : "bi-chevron-down"
-            }`}
-          ></i>
-        </h5>
-        <div className={`collapse ${isPedidosOpen ? "show" : ""}`}>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/pedidos">
-              Pedidos
-            </Link>
-          </li>
-        </div>
-
-        {/* Sección de Configuración */}
-        <h5
-          className="text-white mt-4"
-          onClick={toggleConfiguracion}
-          style={{ cursor: "pointer" }}
-        >
-          Configuración{" "}
-          <i
-            className={`bi ${
-              isConfiguracionOpen ? "bi-chevron-up" : "bi-chevron-down"
-            }`}
-          ></i>
-        </h5>
-        <div className={`collapse ${isConfiguracionOpen ? "show" : ""}`}>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/configuracion">
-              Configuración
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link text-white" to="/admin/perfil">
+          </div>
+        </li>
+        <li className="nav-item mb-2">
+          <Link
+            className="nav-link text-white d-flex align-items-center"
+            to="/admin/proveedores"
+          >
+            <i className="bi bi-truck me-2 fs-6"></i> Proveedores
+          </Link>
+        </li>
+        <li className="nav-item mb-2">
+          <Link
+            className="nav-link text-white d-flex align-items-center"
+            to="/admin/pedidos"
+          >
+            <i className="bi bi-cart-fill me-2 fs-6"></i> Pedidos
+          </Link>
+        </li>
+        <li className="nav-item mt-4">
+          <div
+            onClick={toggleConfiguracion}
+            style={{ cursor: "pointer" }}
+            className="nav-link text-white d-flex align-items-center"
+          >
+            <i className="bi bi-gear me-2 fs-6"></i> Configuración
+            <i
+              className={`bi ${
+                isConfiguracionOpen ? "bi-chevron-up" : "bi-chevron-down"
+              } ms-auto`}
+            ></i>
+          </div>
+          <div className={`collapse ${isConfiguracionOpen ? "show" : ""} ms-3`}>
+            <Link className="nav-link text-white py-1" to="/admin/perfil">
               Perfil
             </Link>
-          </li>
-          <li className="nav-item">
             <button
-              className="nav-link text-white"
+              className="nav-link text-white py-1"
               onClick={handleLogout}
               style={{
-                cursor: "pointer",
                 border: "none",
                 background: "transparent",
-                padding: 0,
+                paddingLeft: "1rem",
               }}
             >
-              Logout
+              <i className="bi bi-box-arrow-left me-2 fs-6"></i> Logout
             </button>
-          </li>
-        </div>
+          </div>
+        </li>
       </ul>
     </div>
   );

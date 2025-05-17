@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// Importa la URL base de la API desde el archivo de configuración o variables de entorno
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const RegistroCliente = () => {
   const [form, setForm] = useState({
     nombres: "",
@@ -45,9 +45,8 @@ const RegistroCliente = () => {
         direccion: form.direccion,
         email: form.email,
         password: form.password,
-        c_password: form.confirmarPassword, // necesario para que el validador funcione
+        c_password: form.confirmarPassword,
       }),
-      
     })
       .then((res) => res.json())
       .then((data) => {
@@ -74,20 +73,21 @@ const RegistroCliente = () => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{ maxWidth: '600px' }}> {/* Centrar y limitar ancho */}
       <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card shadow p-4">
-            <h2 className="text-center mb-4">Registro de Cliente</h2>
+        <div className="col-md-10"> {/* Ocupar más ancho en pantallas medianas */}
+          <div className="card shadow p-4 border-0 rounded-lg"> {/* Sin borde y esquinas redondeadas */}
+            <h2 className="text-center mb-4 text-primary fw-bold">Crear Cuenta</h2> {/* Título primario y en negrita */}
 
-            {mensaje && <div className="alert alert-info">{mensaje}</div>}
+            {mensaje && <div className={`alert ${mensaje.includes('exitoso') ? 'alert-success' : 'alert-danger'} mb-3`}>{mensaje}</div>} {/* Mensajes con colores */}
 
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label">Nombres</label>
+                <label htmlFor="nombres" className="form-label fw-semibold">Nombres</label> {/* Etiqueta seminegrita */}
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="nombres"
                   name="nombres"
                   value={form.nombres}
                   onChange={handleChange}
@@ -95,10 +95,11 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Apellidos</label>
+                <label htmlFor="apellidos" className="form-label fw-semibold">Apellidos</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="apellidos"
                   name="apellidos"
                   value={form.apellidos}
                   onChange={handleChange}
@@ -106,10 +107,11 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Número de Identificación</label>
+                <label htmlFor="identificacion" className="form-label fw-semibold">Número de Identificación</label>
                 <input
                   type="number"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="identificacion"
                   name="identificacion"
                   value={form.identificacion}
                   onChange={handleChange}
@@ -117,10 +119,11 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Correo Electrónico</label>
+                <label htmlFor="email" className="form-label fw-semibold">Correo Electrónico</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="email"
                   name="email"
                   value={form.email}
                   onChange={handleChange}
@@ -128,30 +131,33 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Dirección</label>
+                <label htmlFor="direccion" className="form-label fw-semibold">Dirección</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="direccion"
                   name="direccion"
                   value={form.direccion}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Teléfono</label>
+                <label htmlFor="telefono" className="form-label fw-semibold">Teléfono</label>
                 <input
                   type="tel"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="telefono"
                   name="telefono"
                   value={form.telefono}
                   onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Contraseña</label>
+                <label htmlFor="password" className="form-label fw-semibold">Contraseña</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="password"
                   name="password"
                   value={form.password}
                   onChange={handleChange}
@@ -159,10 +165,11 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="mb-3">
-                <label className="form-label">Repetir Contraseña</label>
+                <label htmlFor="confirmarPassword" className="form-label fw-semibold">Repetir Contraseña</label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control form-control-lg"
+                  id="confirmarPassword"
                   name="confirmarPassword"
                   value={form.confirmarPassword}
                   onChange={handleChange}
@@ -170,9 +177,12 @@ const RegistroCliente = () => {
                 />
               </div>
               <div className="d-grid gap-2">
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary btn-lg rounded-pill fw-bold"> {/* Botón primario grande y redondeado */}
                   Registrar
                 </button>
+              </div>
+              <div className="mt-3 text-center">
+                <p className="text-muted small">¿Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a></p> {/* Enlace a inicio de sesión */}
               </div>
             </form>
           </div>

@@ -2,34 +2,31 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
-// Importa la URL base de la API desde el archivo de configuración o variables de entorno
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-// Componente para cada tarjeta de marca
 const BrandCard = ({ brand }) => {
   const navigate = useNavigate();
   const logoUrl = `/assets/img/marcas/${brand.idMarca}.png`;
 
   const handleViewProducts = () => {
-    // Redirigir a la página de productos de la marca
     navigate(`/productos/marca/${brand.idMarca}`);
   };
 
   return (
     <div className="col">
-      <div className="card shadow-sm text-center h-100">
-        <div style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className="card shadow-sm text-center h-100 border-0 rounded-lg">
+        <div className="bg-light d-flex align-items-center justify-content-center p-3" style={{ height: "180px" }}>
           <img
             src={logoUrl}
             alt={brand.nombreMarca}
-            className="p-3"
+            className="img-fluid p-2"
             style={{ maxHeight: "100%", maxWidth: "100%", objectFit: "contain" }}
           />
         </div>
-        <div className="card-body d-flex flex-column justify-content-between">
-          <h5 className="card-title">{brand.nombreMarca}</h5>
-          <button onClick={handleViewProducts} className="btn btn-primary mt-3">
-            Ver Productos
+        <div className="card-body d-flex flex-column justify-content-between bg-white p-3">
+          <h5 className="card-title fw-bold text-truncate">{brand.nombreMarca}</h5>
+          <button onClick={handleViewProducts} className="btn btn-outline-primary btn-sm rounded-pill fw-semibold mt-3">
+            <i className="bi bi-eye-fill me-1"></i> Ver Productos
           </button>
         </div>
       </div>
@@ -37,7 +34,6 @@ const BrandCard = ({ brand }) => {
   );
 };
 
-// Página principal de marcas
 const BrandsPage = () => {
   const [brands, setBrands] = useState([]);
 
@@ -55,9 +51,9 @@ const BrandsPage = () => {
   }, []);
 
   return (
-    <div className="container mt-4">
-      <h2 className="text-center mb-4">Nuestras Marcas</h2>
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div className="container mt-5">
+      <h2 className="text-center mb-4 fw-bold text-primary">Explora Nuestras Marcas</h2>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
         {brands.map((brand) => (
           <BrandCard key={brand.idMarca} brand={brand} />
         ))}
