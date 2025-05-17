@@ -38,26 +38,6 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      
-      {/* Sección de gráficos (puedes reemplazar con gráficos reales) */}
-      <div className="row mt-4">
-        <div className="col-md-6">
-          <div className="card p-3 shadow">
-            <h5>Gráfico de Ventas</h5>
-            <div className="bg-light" style={{ height: "200px" }}>
-              <p className="text-center text-muted">[Aquí irá un gráfico]</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-6">
-          <div className="card p-3 shadow">
-            <h5>Gráfico de Pedidos</h5>
-            <div className="bg-light" style={{ height: "200px" }}>
-              <p className="text-center text-muted">[Aquí irá otro gráfico]</p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

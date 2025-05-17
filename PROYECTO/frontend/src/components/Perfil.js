@@ -1,19 +1,24 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // 👈 para redireccionar
+import { useNavigate } from "react-router-dom";
 import authServices from "../services/authServices";
 
 const Perfil = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // 👈 Hook de navegación
+  const [loading, setLoading] = useState(true); // Nuevo estado de carga
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfile = async () => {
+      setLoading(true);
       try {
         const data = await authServices.getProfile();
         setUser(data.data);
+        setError("");
       } catch (err) {
-        setError("No se pudo obtener el perfil.");
+        setError(err.message || "No se pudo obtener el perfil.");
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -21,43 +26,35 @@ const Perfil = () => {
   }, []);
 
   const handleEditClick = () => {
-    navigate("/editar-perfil"); // 👈 ruta a la página de edición
+    navigate("/editar-perfil");
   };
 
   const handleDeleteClick = async () => {
-    const confirmDelete = window.confirm("¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede deshacer.");
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que quieres eliminar tu perfil? Esta acción no se puede deshacer."
+    );
 
     if (confirmDelete) {
-        try {
-            // Llamada a la API para eliminar el perfil
-            const response = await fetch('http://localhost:8000/api/clientes/eliminar/cuenta', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}` // Asegúrate de enviar el token JWT si es necesario
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Hubo un problema al eliminar el perfil');
-            }
-
-            // Si se elimina correctamente, redirigimos a la página de inicio o login
-            navigate('/login');
-        } catch (error) {
-            console.error("Error al eliminar el perfil:", error);
-            alert('Hubo un error al intentar eliminar el perfil.');
-        }
+      try {
+        await authServices.deleteProfile(localStorage.getItem("token"));
+        navigate("/login");
+      } catch (error) {
+        console.error("Error al eliminar el perfil:", error);
+        alert(error.message || "Hubo un error al intentar eliminar el perfil.");
+      }
     }
-};
+  };
 
+  if (loading) {
+    return <p>Cargando perfil...</p>;
+  }
 
   if (error) {
     return <p className="text-danger">{error}</p>;
   }
 
   if (!user) {
-    return <p>Cargando perfil...</p>;
+    return <p>No se ha encontrado información del usuario.</p>; // Mensaje más claro si no hay usuario
   }
 
   return (

@@ -4,13 +4,15 @@ import { useDispatch } from "react-redux"; // Importa useDispatch
 import { addToCart } from "../redux/cartSlice"; // Ajusta la ruta según tu estructura de archivos
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const ProductInfo = () => {
   const { idProducto } = useParams();
   const [producto, setProducto] = useState(null);
   const dispatch = useDispatch(); // Obtén la función dispatch
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/verProductos/${idProducto}`)
+    fetch(`${API_BASE_URL}/verProductos/${idProducto}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
@@ -32,12 +34,16 @@ const ProductInfo = () => {
           cantidad: 1, // Puedes permitir al usuario cambiar la cantidad en otro lugar
         })
       );
-      console.log(`Producto "${producto.nombreProducto}" con ID ${producto.idProducto} agregado al carrito desde la página de Info.`);
+      console.log(
+        `Producto "${producto.nombreProducto}" con ID ${producto.idProducto} agregado al carrito desde la página de Info.`
+      );
     }
   };
 
   if (!producto) {
-    return <div className="container mt-5">Cargando información del producto...</div>;
+    return (
+      <div className="container mt-5">Cargando información del producto...</div>
+    );
   }
 
   const imagePath = `/assets/img/productos/${producto.idProducto}/principal.png`;
@@ -47,17 +53,23 @@ const ProductInfo = () => {
       <div className="row">
         {/* Imagen */}
         <div className="col-md-6">
-          <img src={imagePath} alt={producto.nombreProducto} className="img-fluid rounded" />
+          <img
+            src={imagePath}
+            alt={producto.nombreProducto}
+            className="img-fluid rounded"
+          />
         </div>
 
         {/* Información del producto */}
         <div className="col-md-6">
           <h2>{producto.nombreProducto}</h2>
           <p className="text-muted">
-            Marca: {producto.marca ? producto.marca.nombreMarca : "No disponible"}
+            Marca:{" "}
+            {producto.marca ? producto.marca.nombreMarca : "No disponible"}
           </p>
           <p className="text-muted">
-            Categorías: {producto.categorias && producto.categorias.length > 0
+            Categorías:{" "}
+            {producto.categorias && producto.categorias.length > 0
               ? producto.categorias.map((c) => c.nombreCategoria).join(", ")
               : "No disponible"}
           </p>

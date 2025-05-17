@@ -3,6 +3,9 @@
   import { addToCart } from "../../redux/cartSlice";
   import "bootstrap/dist/css/bootstrap.min.css";
 
+  // Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   const categories = [
     "TODOS",
     "BOARDS",
@@ -67,7 +70,7 @@
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-      fetch("http://localhost:8000/api/verProductos/")
+      fetch(`${API_BASE_URL}/verProductos/`)
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {

@@ -23,7 +23,7 @@ const Login = () => {
         dispatch(loginSuccess({ user, access_token })); // Despacha la acción con el 'user' recibido
         navigate(user.rol === "Admin" ? "/admin" : "/perfil");
       }else if (user.rol === "SuperAdmin") {
-          navigate("/superadmin"); // 👈 Redirige a SuperAdmin
+          navigate("/admin"); // 👈 Redirige a SuperAdmin
         } else {
         setError("Credenciales inválidas o no se recibió información del usuario.");
         dispatch(loginFailure("Credenciales inválidas o no se recibió información del usuario."));

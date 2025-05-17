@@ -4,6 +4,9 @@ import { Carousel } from "react-bootstrap";
 import { useDispatch } from "react-redux"; // Importa useDispatch
 import { addToCart } from "../../redux/cartSlice";
 
+// Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 // Card del producto
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -73,11 +76,11 @@ const HomePage = () => {
   const [productosRecientes, setProductosRecientes] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/verProductos/home")
+    fetch(`${API_BASE_URL}/verProductos/home`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setProductosRecientes(data.data); //  Aquí solo pasamos el array
+          setProductosRecientes(data.data);
         } else {
           console.error("Error:", data.message);
         }

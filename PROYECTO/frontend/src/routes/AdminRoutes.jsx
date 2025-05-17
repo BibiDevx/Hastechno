@@ -7,7 +7,7 @@ import MarcasAdmin from "../pages/admin/MarcasAdmin";
 import CategoriasAdmin from "../pages/admin/CategoriasAdmin";
 import ConfiguracionAdmin from "../pages/admin/ConfiguracionAdmin";
 import PerfilAdmin from "../pages/admin/PerfilAdmin";
-import ClienteRoutes from "./ClienteRoutes"; // Importa las rutas de cliente
+
 
 export default function AdminRoutes() {
   return (
@@ -20,9 +20,6 @@ export default function AdminRoutes() {
       <Route path="/categorias" element={<CategoriasAdmin />} />
       <Route path="/configuracion" element={<ConfiguracionAdmin />} />
       <Route path="/perfil" element={<PerfilAdmin />} />
-
-      {/* Nueva Ruta: Vista de Prueba */}
-      <Route path="/prueba/*" element={<ClienteRoutes modoPrueba={true} />} />
     </Routes>
   );
 }

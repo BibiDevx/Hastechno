@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const RegistroCliente = () => {
   const [form, setForm] = useState({
     nombres: "",
@@ -30,7 +32,7 @@ const RegistroCliente = () => {
       return;
     }
 
-    fetch("http://localhost:8000/api/auth/register/cliente", {
+    fetch(`${API_BASE_URL}/auth/register/cliente`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

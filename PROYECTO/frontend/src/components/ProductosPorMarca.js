@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"; // Importa useDispatch
 import { addToCart } from "../redux/cartSlice"; // Ajusta la ruta según tu estructura de archivos
 
+// Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const ProductosPorMarca = () => {
   const { idMarca } = useParams();
   const [productos, setProductos] = useState([]);
@@ -11,7 +13,7 @@ const ProductosPorMarca = () => {
   const dispatch = useDispatch(); // Obtén la función dispatch
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/verProductos/marcas/${idMarca}`)
+    fetch(`${API_BASE_URL}/verProductos/marcas/${idMarca}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
+// Importa la URL base de la API desde el archivo de configuración o variables de entorno
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 // Componente para cada tarjeta de marca
 const BrandCard = ({ brand }) => {
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ const BrandsPage = () => {
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/verMarcas")
+    fetch(`${API_BASE_URL}/verMarcas`)
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
