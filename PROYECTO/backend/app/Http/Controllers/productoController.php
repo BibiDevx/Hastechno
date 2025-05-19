@@ -20,11 +20,11 @@ class productoController extends BaseController
     }
     
     public function detalles()
-    {
-        ///Admin solo ve el de detalles ya que son todos los productos con su categoria y marca
-        $productos = Producto::with(['marca', 'categorias'])->get();
-        return $this->sendResponse($productos, 'Detalles de productos obtenidos correctamente');
-    }
+{
+    ///Admin solo ve el de detalles ya que son todos los productos con su categoria y marca y proveedor (solo id y nombre)
+    $productos = Producto::with(['marca', 'categorias', 'proveedor:idProveedor,nombreProveedor'])->get();
+    return $this->sendResponse($productos, 'Detalles de productos obtenidos correctamente');
+}
 
     public function index()
     {

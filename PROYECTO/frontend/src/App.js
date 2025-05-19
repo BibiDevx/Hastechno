@@ -9,12 +9,12 @@ import {
 import { useSelector } from "react-redux";
 import ClienteRoutes from "./routes/ClienteRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
-import Navbar from "./components/Navbar";
-import Perfil from "./components/Perfil";
-import EditarPerfil from "./components/EditarPerfil";
-import SidebarAdmin from "./components/SidebarAdmin";
-import ProductInfo from "./components/ProductInfo";
-import ProductosPorMarca from "./components/ProductosPorMarca";
+import Navbar from "./components/client/Navbar";
+import Perfil from "./components/client/Perfil";
+import EditarPerfil from "./components/client/EditarPerfil";
+import SidebarAdmin from "./components/admin/SidebarAdmin";
+import ProductInfo from "./components/client/ProductInfo";
+import ProductosPorMarca from "./components/client/ProductosPorMarca";  
 
 function App() {
   return (

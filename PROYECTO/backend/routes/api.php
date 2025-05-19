@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\marcaController;
 use App\Http\Controllers\productoController;
 use App\Http\Controllers\rolController;
+use App\Http\Controllers\proveedorController;
 use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -98,3 +99,13 @@ Route::middleware(['auth:api', 'role:Admin'])->prefix('marcas')->group(function 
     Route::delete('/eliminar/{id}', [marcaController::class, 'destroy'])->where('id', '[0-9]+');
 });
 ///////////////////////////////////////////////////////////////////////
+Route::prefix('verProveedores')->group(function () {
+    Route::get('/', [proveedorController::class, 'index']);
+    Route::get('/{id}', [proveedorController::class, 'show'])->where('id', '[0-9]+');
+});
+
+Route::middleware(['auth:api', 'role:Admin'])->prefix('proveedores')->group(function () {
+    Route::post('/registrar', [proveedorController::class, 'store']);
+    Route::patch('/actualizar/{id}', [proveedorController::class, 'updatePartial'])->where('id', '[0-9]+');
+    Route::delete('/eliminar/{id}', [proveedorController::class, 'destroy'])->where('id', '[0-9]+');
+});

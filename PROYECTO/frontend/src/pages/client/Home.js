@@ -3,9 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
-import { Link } from "react-router-dom"; // Importa Link
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import { Link } from "react-router-dom";
+import productService from '../../services/productService'; // Importa el servicio
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -64,19 +63,38 @@ const ProductCard = ({ product }) => {
 
 const HomePage = () => {
   const [productosRecientes, setProductosRecientes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/verProductos/home`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchRecentProducts = async () => {
+      setLoading(true);
+      try {
+        const data = await productService.getHomeProducts();
         if (data.success) {
           setProductosRecientes(data.data);
         } else {
           console.error("Error:", data.message);
+          setError(data.message || 'Error al cargar los productos recientes.');
         }
-      })
-      .catch((error) => console.error("Fetch error:", error));
+      } catch (error) {
+        setError('Error de conexión con el servidor.');
+        console.error("Fetch error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecentProducts();
   }, []);
+
+  if (loading) {
+    return <p className="text-center mt-5">Cargando productos recientes...</p>;
+  }
+
+  if (error) {
+    return <p className="text-center mt-5 text-danger">{error}</p>;
+  }
 
   return (
     <div>
@@ -111,7 +129,7 @@ const HomePage = () => {
               <ProductCard key={product.idProducto} product={product} />
             ))
           ) : (
-            <p className="text-center text-muted">Cargando productos...</p>
+            <p className="text-center text-muted">No hay productos recientes disponibles.</p>
           )}
         </div>
       </div>

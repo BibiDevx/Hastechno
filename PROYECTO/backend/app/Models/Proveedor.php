@@ -14,10 +14,13 @@ class Proveedor extends Model
     protected $primaryKey = 'idProveedor';
 
     protected $fillable = [
-        'idProveedor',
         'nombreProveedor',
         'correoProveedor',
         'telefonoProveedor'
+    ];
+       protected $hidden = [
+        'created_at',
+        'updated_at'
     ];
 
     public function productos()

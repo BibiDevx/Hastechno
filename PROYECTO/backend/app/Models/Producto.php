@@ -24,16 +24,21 @@ class Producto extends Model
     {
         return $this->belongsTo(Marca::class, 'idMarca');
     }
-    
+
     public function categorias()
     {
         return $this->belongsToMany(Categoria::class, 'categoriaproducto', 'idProducto', 'idCategoria');
     }
-    protected $hidden = ['created_at', 'updated_at'];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'idMarca',     
+        'idProveedor'  
+    ];
 
     public function proveedor()
     {
-        return $this->belongsTo(Proveedor::class, 'idProveedor');
+        return $this->belongsTo(Proveedor::class, 'idProveedor')->select(['idProveedor', 'nombreProveedor']);
     }
-
 }

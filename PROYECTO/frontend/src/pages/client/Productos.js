@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/cartSlice";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom"; // Importa Link
-
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import { Link } from "react-router-dom";
+import productService from '../../services/productService'; // Importa el servicio
 
 const categories = [
   "TODOS",
@@ -81,18 +80,29 @@ const ProductCard = ({ product }) => {
 const ProductList = () => {
   const [selectedCategory, setSelectedCategory] = useState("TODOS");
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/verProductos/`)
-      .then((res) => res.json())
-      .then((data) => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      try {
+        const data = await productService.getAllAvailableProducts();
         if (data.success) {
           setProducts(data.data);
         } else {
           console.error("Error al cargar productos:", data.message);
+          setError(data.message || 'Error al cargar productos.');
         }
-      })
-      .catch((err) => console.error("Error en fetch:", err));
+      } catch (err) {
+        setError('Error de conexión con el servidor.');
+        console.error("Error en fetch:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   const filteredProducts =
@@ -103,6 +113,14 @@ const ProductList = () => {
             (categoria) => categoria.nombreCategoria === selectedCategory
           )
         );
+
+  if (loading) {
+    return <div className="container mt-4 text-center">Cargando productos...</div>;
+  }
+
+  if (error) {
+    return <div className="container mt-4 text-center text-danger">{error}</div>;
+  }
 
   return (
     <div className="container mt-4">
